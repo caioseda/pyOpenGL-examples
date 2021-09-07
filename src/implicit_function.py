@@ -13,8 +13,8 @@ n = 50
 dx = (xn - x0)/n
 dy = (yn - y0)/n
 
-cor1 = np.array([45,154,248])/255
-cor2 = np.array([45,248,119])/255
+color1 = np.array([45,154,248])/255
+color2 = np.array([45,248,119])/255
 
 def f2(x,y):
     return 2*x*y
@@ -22,10 +22,10 @@ def f2(x,y):
 def f(x,y):
     return np.sin(x+y)**3
 
-def cor(t, c1 = np.array([1,0,0]), c2 = np.array([0,0,1])):
+def get_color(t, c1 = np.array([1,0,0]), c2 = np.array([0,0,1])):
     return c1 + t*(c2 - c1)    
 
-def desenhaSuperficie(func = lambda x, y: x+y):
+def draw_functions(func = lambda x, y: x+y):
     y = y0
 
     for i in range(n):
@@ -33,7 +33,7 @@ def desenhaSuperficie(func = lambda x, y: x+y):
         glBegin(GL_TRIANGLE_STRIP)
         for j in range(n): 
 
-            glColor3fv(cor(j/(n-1), cor1, cor2))
+            glColor3fv(get_color(j/(n-1), color1, color2))
             glVertex3f(x, y, func(x, y))
             glVertex3f(x, y + dy, func(x, y + dy))
             x = x0 + j*dx
@@ -42,21 +42,21 @@ def desenhaSuperficie(func = lambda x, y: x+y):
         y = y0 + i*dx
 
 a = 0
-def desenha():
+def draw():
     global a
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
     glPushMatrix()
 
     glTranslate(0, 3, 0)
     glRotatef(-a,1,1,0)
-    desenhaSuperficie(func = f)
+    draw_functions(func = f)
     
     glPopMatrix()
     glPushMatrix()
 
     glTranslate(0, -3, 0)
     glRotatef(-a,-1,-1,0)
-    desenhaSuperficie(func = f2)
+    draw_functions(func = f2)
     
     glPopMatrix()
     glutSwapBuffers()
@@ -69,8 +69,8 @@ def timer(i):
 glutInit(sys.argv)
 glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_MULTISAMPLE)
 glutInitWindowSize(800,800)
-glutCreateWindow("Função ")
-glutDisplayFunc(desenha)
+glutCreateWindow("Implicit function")
+glutDisplayFunc(draw)
 glEnable(GL_MULTISAMPLE)
 glEnable(GL_DEPTH_TEST)
 glClearColor(0.,0.,0.,1.)

@@ -38,7 +38,6 @@ def prism_base(height=0, n_sides=3, radius = 1):
     glEnd()
 
     return vertices
-        
 
 def draw_prism(height, n_sides, radius):
     
@@ -73,7 +72,7 @@ def keyPressed(key, x, y):
         N_SIDES += 1
 
     elif key == GLUT_KEY_DOWN:
-        if N_SIDES >= 2:
+        if N_SIDES > 3:
             N_SIDES -= 1
 
 glutInit(sys.argv)
