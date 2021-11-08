@@ -59,7 +59,7 @@ def init():
     glShadeModel(GL_SMOOTH)
     glEnable(GL_DEPTH_TEST)
     glEnable(GL_MULTISAMPLE)
-    ply = Ply("../assets/banana.ply")
+    ply = Ply("assets/banana.ply")
 
 def main():
     glutInit(sys.argv)

@@ -100,10 +100,12 @@ def keyPressed(key, x, y):
     global N_SIDES
     if key == GLUT_KEY_UP:
         N_SIDES += 1
+        print(f'CIMA - N LADOS : {N_SIDES}')
 
     elif key == GLUT_KEY_DOWN:
         if N_SIDES > 3:
             N_SIDES -= 1
+            print(f'BAIXO - N LADOS : {N_SIDES}')
 
 def timer(i):
     glutPostRedisplay()
@@ -141,6 +143,7 @@ def init():
     glEnable(GL_MULTISAMPLE)
 
 def main():
+    print('Use SETA CIMA e SETA BAIXO para alterar o número de faces.')
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_MULTISAMPLE)
     glutInitWindowSize(800,600)

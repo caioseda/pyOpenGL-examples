@@ -119,8 +119,8 @@ def DrawGLScene():
     glEnd()                # Done Drawing The Cube
     
     xrot = xrot + 0.01                # X rotation
-    yrot = yrot + 0.01                 # Y rotation
-    zrot = zrot + 0.01                 # Z rotation
+    yrot = yrot + 0.01                # Y rotation
+    zrot = zrot + 0.01                # Z rotation
 
     glutSwapBuffers()
 
@@ -163,7 +163,7 @@ def main():
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)    
     glutInitWindowSize(640, 480)
     glutInitWindowPosition(0, 0)
-    glutCreateWindow("Textura")
+    glutCreateWindow("Dado")
     glutDisplayFunc(DrawGLScene)
     glutIdleFunc(DrawGLScene)
     glutReshapeFunc(ReSizeGLScene)

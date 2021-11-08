@@ -10,7 +10,7 @@ import numpy as np
 ESCAPE = b'\033'
 
 # Path
-TEXTURE_PATH = '../assets/mapa_mundi.png'
+TEXTURE_PATH = 'assets/mapa_mundi.png'
 
 # Number of the glut window.
 window = 0
